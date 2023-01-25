@@ -9,6 +9,7 @@ df=yf.download(ticker, period="10y", auto_adjust= True)
 
 
 #arr = np.random.normal(1, 1, size=1000)
-fig = plt.plot(df['Close'])
+fig = plt.figure()
+plt.plot(df['Close'])
 
 st.pyplot(fig)
