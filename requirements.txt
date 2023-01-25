@@ -1,3 +1,6 @@
 tensorflow-cpu==2.7.0
 streamlit==1.11.0
 click==8
+matplotlib==3.2.2
+numpy==1.18.1
+pandas==1.0.5
