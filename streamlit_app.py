@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import yfinance as yf
 import streamlit as st
-import plotly.figure_factory as ff
 
 #ticker="CCRO3.SA"
 #df=yf.download(ticker, period="10y", auto_adjust= True)
