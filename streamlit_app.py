@@ -1,5 +1,3 @@
-!pip install streamlit
-!pip install yfinance --upgrade --no-cache-dir
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
