@@ -8,8 +8,8 @@ ticker="CCRO3.SA"
 df=yf.download(ticker, period="10y", auto_adjust= True)
 
 
-arr = np.random.normal(1, 1, size=1000)
-fig, ax = plt.subplots()
-ax.hist(arr, bins=30)
+#arr = np.random.normal(1, 1, size=1000)
+fig = plt.subplots()
+ax.plot(df['Close'])
 
 st.pyplot(fig)
