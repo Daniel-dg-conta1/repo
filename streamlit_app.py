@@ -1,8 +1,3 @@
-!pip install streamlit
-!pip install matplotlib
-!pip install pandas_datareader
-!pip install yfinance
-
 import streamlit as st
 import numpy as np
 import pandas as pd
