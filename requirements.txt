@@ -4,3 +4,4 @@ click==8
 matplotlib==3.2.2
 numpy==1.18.1
 pandas==1.0.5
+yfinance==0.2.6
