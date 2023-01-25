@@ -8,4 +8,4 @@ ticker="CCRO3.SA"
 df=yf.download(ticker, period="10y", auto_adjust= True)
 
 
-st.pyplot(plt.plot(df['Close']))
+st.pyplot(df['Close']).plot())
