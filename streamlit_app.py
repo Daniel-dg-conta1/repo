@@ -5,8 +5,6 @@ import yfinance as yf
 import streamlit as st
 
 
-local_css("style.css")
-
 #ticker search feature in sidebar
 st.sidebar.subheader("""Stock Search Web App""")
 selected_stock = st.sidebar.text_input("Enter a valid stock ticker...", "GOOG")
