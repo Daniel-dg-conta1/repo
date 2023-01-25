@@ -1,8 +1,11 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import pandas_datareader.data as web
-import yfinance as yf
-yf.pdr_override()
-papel=yf.download('PETR4.SA')
-papel["Close"].plot(figsize=(22,8))
+import streamlit as st
+
+
+st.sidebar.title('menu')
+paginaSelecionada=st.sidebar.selectbox('Selecione a página',['Página 1', 'Página 2'])
+
+if paginaSelecionada== 'Página 1':
+    st.title('Video Exemplo')
+    st.selectbox('Selecione uma opção',['opção 1', 'opção 2'])
+elif paginaSelecionada== 'Página 2':
+    st.title('Você selecionou a página 2')
