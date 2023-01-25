@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import yfinance as yf
 import streamlit as st
+from datetime import datetime
 
 
 #ticker search feature in sidebar
