@@ -8,7 +8,26 @@ import datetime
 
 #ticker search feature in sidebar
 st.sidebar.subheader("""Aplicativo QuantRock""")
-selected_stock = st.sidebar.text_input("Enter a valid stock ticker...", "PETR4")
+
+selected_stock = st.sidebar.selectbox(
+        'Escolha o ativo',
+        ('','OUTRO',"ABEV3","ALPA4","ALSO3","ARZZ3","ASAI3","AZUL4","B3SA3","BBAS3"
+         ,"BBDC3","BBDC4","BBSE3","BEEF3","BPAC11","BPAN4","BRAP4","BRFS3","BRKM5"
+         ,"CASH3","CCRO3","CIEL3","CMIG4","CMIN3","COGN3","CPFE3","CPLE6","CRFB3"
+         ,"CSAN3","CSNA3","CVCB3","CYRE3","DXCO3","ECOR3","EGIE3","ELET3","ELET6"
+         ,"EMBR3","ENBR3","ENEV3","ENGI11","EQTL3","EZTC3","FLRY3","GGBR4","GOAU4"
+         ,"GOLL4","HAPV3","HYPE3","IGTI11","ITSA4","ITUB4","JBSS3","KLBN11","LREN3"
+         ,"LWSA3","MGLU3","MRFG3","MRVE3","MULT3","NTCO3","PCAR3","PETR3","PETR4"
+         ,"PETZ3","PRIO3","QUAL3","RADL3","RAIL3","RAIZ4","RDOR3","RENT3","RRRP3"
+         ,"SANB11","SBSP3","SLCE3","SMTO3","SOMA3","SUZB3","TAEE11","TIMS3","TOTS3"
+         ,"UGPA3","USIM5","VALE3","VBBR3","VIIA3","VIVT3","WEGE3","YDUQ3"))
+
+if selected_stock == '':
+    selected_stock = st.sidebar.text_input("Ou escreva o ticker no campo abaixo")
+
+if selected_stock == 'OUTRO':
+    selected_stock = st.sidebar.text_input("Ou escreva o ticker no campo abaixo")
+    
 #Selecionar o período
 dIni = st.date_input(
     "Início",
@@ -29,11 +48,12 @@ def main():
     #print line chart with daily closing prices for searched ticker
     st.line_chart(stock_df.Close)
 
-    st.subheader("""Úlitmo **preço de fechamento** de """ + selected_stock)
-    #imprime o último fechamento com a data
-    last_price = str(round(stock_df['Close'].iloc[-1],2))
-    hoje=str(stock_df.index[-1].strftime('%d/%m/%y'))
-    st.write('Data:' + hoje + ' Preço: ' + last_price)
+    if selected_stock != '':       
+            st.subheader("""Úlitmo **preço de fechamento** de """ + selected_stock)
+            #imprime o último fechamento com a data
+            last_price = str(round(stock_df['Close'].iloc[-1],2))
+            hoje=str(stock_df.index[-1].strftime('%d/%m/%y'))
+            st.write('Data:' + hoje + ' Preço: ' + last_price)
     
      
     #get daily volume for searched ticker
