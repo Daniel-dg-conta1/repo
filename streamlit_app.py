@@ -4,7 +4,9 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 import streamlit as st
 import datetime
+import fundamentus
 
+df = fundamentus.get_resultado()
 
 #ticker search feature in sidebar
 st.sidebar.subheader("""Aplicativo QuantRock""")
@@ -71,6 +73,18 @@ def main():
             st.write("Sem dados no momento")
         else:
             st.write(display_action)
+        
+    #indicadores fundamentalistas
+    st.sidebar.subheader("""Mostrar Indicadores Fundamentalistas""")
+    #checkbox to display stock actions for the searched ticker
+    actions = st.sidebar.checkbox("Indicadores")
+    if actions:
+        st.subheader("Indicadores de " + selected_stock)
+        display_action = df.loc[selected_stock]
+        if display_action.empty == True:
+            st.write("Sem dados no momento")
+        else:
+            st.write(display_action)      
  
 
 if __name__ == "__main__":
