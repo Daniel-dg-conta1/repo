@@ -18,9 +18,9 @@ def main():
     #get data on searched ticker
     stock_data = yf.Ticker(selected_stock)
     #get historical data for searched ticker
-    stock_df = stock_data.history(period='1d', start='2020-01-01', end=None)
+    stock_df = stock_data.history(period='1d', start='2020-01-01', end=None, auto_adjust = True)
     #print line chart with daily closing prices for searched ticker
-    st.line_chart(stock_df.AdjClose)
+    st.line_chart(stock_df.Close)
 
     st.subheader("""Úlitmo **preço de fechamento** de """ + selected_stock)
     #define variable today 
