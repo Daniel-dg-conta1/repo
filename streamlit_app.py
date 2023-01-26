@@ -45,9 +45,9 @@ def main():
     st.line_chart(stock_df.Volume)
 
     #additional information feature in sidebar
-    st.sidebar.subheader("""Display Additional Information""")
+    st.sidebar.subheader("""Mostrar Informações Adicionais""")
     #checkbox to display stock actions for the searched ticker
-    actions = st.sidebar.checkbox("Stock Actions")
+    actions = st.sidebar.checkbox("Dividendos e Splits")
     if actions:
         st.subheader("""Stock **actions** for """ + selected_stock)
         display_action = (stock_data.actions)
