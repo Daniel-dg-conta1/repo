@@ -22,7 +22,7 @@ def main():
     #print line chart with daily closing prices for searched ticker
     st.line_chart(stock_df.Close)
 
-    st.subheader("""Last **closing price** for """ + selected_stock)
+    st.subheader("""Úlitmo **preço de fechamento** de """ + selected_stock)
     #define variable today 
     today = datetime.today().strftime('%Y-%m-%d')
     #get current date data for searched ticker
@@ -30,13 +30,14 @@ def main():
     #get current date closing price for searched ticker
     #last_price = (stock_lastprice.Close)
     last_price = round(stock_df['Close'].iloc[-1],2)
-    st.write(last_price)
+    st.write('Data:' + today() + ' Preço: " + last_price)
+    
     #last_price = '22.35'
     #if market is closed on current date print that there is no data available
-    '''if last_price.empty == True:
-        st.write("No data available at the moment")
-    else:
-        st.write(last_price)'''
+    #if last_price.empty == True:
+    #    st.write("No data available at the moment")
+    #else:
+    #    st.write(last_price)'''
     
     #get daily volume for searched ticker
     st.subheader("""Daily **volume** for """ + selected_stock)
