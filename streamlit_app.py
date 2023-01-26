@@ -31,7 +31,7 @@ def main():
     #last_price = (stock_lastprice.Close)
     last_price = str(round(stock_df['Close'].iloc[-1],2))
     hoje=str(stock_df.index[-1].strftime('%d/%m/%y'))
-    st.write('Data:' + hoje + ' Preço: " + last_price)
+    st.write('Data:' + hoje + ' Preço: ' + last_price)
     
     #last_price = '22.35'
     #if market is closed on current date print that there is no data available
