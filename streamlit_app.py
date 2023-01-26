@@ -20,7 +20,7 @@ def main():
     #get historical data for searched ticker
     stock_df = stock_data.history(period='1d', start='2020-01-01', end=None)
     #print line chart with daily closing prices for searched ticker
-    st.line_chart(stock_df.Close)
+    st.line_chart(stock_df.AdjClose)
 
     st.subheader("""Úlitmo **preço de fechamento** de """ + selected_stock)
     #define variable today 
@@ -49,7 +49,7 @@ def main():
     #checkbox to display stock actions for the searched ticker
     actions = st.sidebar.checkbox("Dividendos e Splits")
     if actions:
-        st.subheader("""Dividendos **pagos ** de """ + selected_stock)
+        st.subheader("Dividendos pagos de " + selected_stock)
         display_action = (stock_data.actions)
         if display_action.empty == True:
             st.write("Sem dados no momento")
