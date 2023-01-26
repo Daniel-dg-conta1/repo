@@ -41,7 +41,7 @@ def main():
     #    st.write(last_price)'''
     
     #get daily volume for searched ticker
-    st.subheader("""Daily **volume** for """ + selected_stock)
+    st.subheader("""Volume **diário** de """ + selected_stock)
     st.line_chart(stock_df.Volume)
 
     #additional information feature in sidebar
@@ -49,10 +49,10 @@ def main():
     #checkbox to display stock actions for the searched ticker
     actions = st.sidebar.checkbox("Dividendos e Splits")
     if actions:
-        st.subheader("""Stock **actions** for """ + selected_stock)
+        st.subheader("""Dividendos **pagos ** de """ + selected_stock)
         display_action = (stock_data.actions)
         if display_action.empty == True:
-            st.write("No data available at the moment")
+            st.write("Sem dados no momento")
         else:
             st.write(display_action)
     
