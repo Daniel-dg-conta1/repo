@@ -29,7 +29,8 @@ def main():
     stock_lastprice = stock_data.history(period='1d', start=today, end=today)
     #get current date closing price for searched ticker
     #last_price = (stock_lastprice.Close)
-    last_price = round(stock_df['Close'].iloc[-1],2)
+    #last_price = round(stock_df['Close'].iloc[-1],2)
+    last_price = 22.35
     #if market is closed on current date print that there is no data available
     if last_price.empty == True:
         st.write("No data available at the moment")
