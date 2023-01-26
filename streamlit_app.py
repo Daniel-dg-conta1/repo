@@ -90,13 +90,9 @@ def main():
     st.sidebar.subheader("""Mostrar Todos os Ativos""")
     #checkbox to display stock actions for the searched ticker
     todosAtivos = st.sidebar.checkbox("Todos ativos - Indicadores")
-    if actions:
-        st.subheader("Indicadores de " + selected_stock)
-        display_action = df.loc[selected_stock]
-        if display_action.empty == True:
-            st.write("Sem dados no momento")
-        else:
-            st.dataframe(df)  
+    if todosAtivos:
+        st.subheader("Indicadores Fundamentalistas - Todos ativos do IBOV")
+        st.dataframe(df)  
  
 
 if __name__ == "__main__":
