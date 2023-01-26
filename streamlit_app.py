@@ -3,43 +3,39 @@ import numpy as np
 import matplotlib.pyplot as plt
 import yfinance as yf
 import streamlit as st
-from datetime import datetime
+import datetime
 
 
 #ticker search feature in sidebar
-st.sidebar.subheader("""Stock Search Web App""")
-selected_stock = st.sidebar.text_input("Enter a valid stock ticker...", "GOOG")
-button_clicked = st.sidebar.button("GO")
-if button_clicked == "GO":
+st.sidebar.subheader("""Aplicativo QuantRock""")
+selected_stock = st.sidebar.text_input("Enter a valid stock ticker...", "PETR4")
+#Selecionar o período
+dIni = st.date_input(
+    "Início",
+    datetime.date(2020, 1, 1))
+
+
+
+button_clicked = st.sidebar.button("OK")
+if button_clicked == "OK":
     main()
   
 def main():
-    st.subheader("""Daily **closing price** for """ + selected_stock)
+    st.subheader("Preço de frechamento de " + selected_stock)
     #get data on searched ticker
-    stock_data = yf.Ticker(selected_stock)
+    stock_data = yf.Ticker(selected_stock + '.SA')
     #get historical data for searched ticker
-    stock_df = stock_data.history(period='1d', start='2020-01-01', end=None, auto_adjust = True)
+    stock_df = stock_data.history(period='1d', start=dIni, end=None, auto_adjust = True)
     #print line chart with daily closing prices for searched ticker
     st.line_chart(stock_df.Close)
 
     st.subheader("""Úlitmo **preço de fechamento** de """ + selected_stock)
-    #define variable today 
-    today = datetime.today().strftime('%Y-%m-%d')
-    #get current date data for searched ticker
-    stock_lastprice = stock_data.history(period='1d', start=today, end=today)
-    #get current date closing price for searched ticker
-    #last_price = (stock_lastprice.Close)
+    #imprime o último fechamento com a data
     last_price = str(round(stock_df['Close'].iloc[-1],2))
     hoje=str(stock_df.index[-1].strftime('%d/%m/%y'))
     st.write('Data:' + hoje + ' Preço: ' + last_price)
     
-    #last_price = '22.35'
-    #if market is closed on current date print that there is no data available
-    #if last_price.empty == True:
-    #    st.write("No data available at the moment")
-    #else:
-    #    st.write(last_price)'''
-    
+     
     #get daily volume for searched ticker
     st.subheader("""Volume **diário** de """ + selected_stock)
     st.line_chart(stock_df.Volume)
@@ -55,66 +51,7 @@ def main():
             st.write("Sem dados no momento")
         else:
             st.write(display_action)
-    
-    #checkbox to display quarterly financials for the searched ticker
-    financials = st.sidebar.checkbox("Quarterly Financials")
-    if financials:
-        st.subheader("""**Quarterly financials** for """ + selected_stock)
-        display_financials = (stock_data.quarterly_financials)
-        if display_financials.empty == True:
-            st.write("No data available at the moment")
-        else:
-            st.write(display_financials)
-
-    #checkbox to display list of institutional shareholders for searched ticker
-    major_shareholders = st.sidebar.checkbox("Institutional Shareholders")
-    if major_shareholders:
-        st.subheader("""**Institutional investors** for """ + selected_stock)
-        display_shareholders = (stock_data.institutional_holders)
-        if display_shareholders.empty == True:
-            st.write("No data available at the moment")
-        else:
-            st.write(display_shareholders)
-
-    #checkbox to display quarterly balance sheet for searched ticker
-    balance_sheet = st.sidebar.checkbox("Quarterly Balance Sheet")
-    if balance_sheet:
-        st.subheader("""**Quarterly balance sheet** for """ + selected_stock)
-        display_balancesheet = (stock_data.quarterly_balance_sheet)
-        if display_balancesheet.empty == True:
-            st.write("No data available at the moment")
-        else:
-            st.write(display_balancesheet)
-
-    #checkbox to display quarterly cashflow for searched ticker
-    cashflow = st.sidebar.checkbox("Quarterly Cashflow")
-    if cashflow:
-        st.subheader("""**Quarterly cashflow** for """ + selected_stock)
-        display_cashflow = (stock_data.quarterly_cashflow)
-        if display_cashflow.empty == True:
-            st.write("No data available at the moment")
-        else:
-            st.write(display_cashflow)
-
-    #checkbox to display quarterly earnings for searched ticker
-    earnings = st.sidebar.checkbox("Quarterly Earnings")
-    if earnings:
-        st.subheader("""**Quarterly earnings** for """ + selected_stock)
-        display_earnings = (stock_data.quarterly_earnings)
-        if display_earnings.empty == True:
-            st.write("No data available at the moment")
-        else:
-            st.write(display_earnings)
-
-    #checkbox to display list of analysts recommendation for searched ticker
-    analyst_recommendation = st.sidebar.checkbox("Analysts Recommendation")
-    if analyst_recommendation:
-        st.subheader("""**Analysts recommendation** for """ + selected_stock)
-        display_analyst_rec = (stock_data.recommendations)
-        if display_analyst_rec.empty == True:
-            st.write("No data available at the moment")
-        else:
-            st.write(display_analyst_rec)
+ 
 
 if __name__ == "__main__":
     main()
