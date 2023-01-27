@@ -6,3 +6,4 @@ yfinance==0.2.6
 DateTime==5.0
 fundamentus==0.2.0
 plotly==5.13.0
+streamlit-aggrid==0.3.3
