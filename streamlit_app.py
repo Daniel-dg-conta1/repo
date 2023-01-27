@@ -48,7 +48,17 @@ def main():
     #get historical data for searched ticker
     stock_df = stock_data.history(period='1d', start=dIni, end=None, auto_adjust = True)
     #print line chart with daily closing prices for searched ticker
-    st.line_chart(stock_df.Close)
+    #st.line_chart(stock_df.Close) #Gráfico de fechamento simples, de linha
+    
+    fig = go.Figure(data=[go.Candlestick(
+        x=stock_df.index,
+        open=stock_df['Open'], high=stock_df['High'],
+        low=stock_df['Low'], close=stock_df['Close'],
+        increasing_line_color= 'green', decreasing_line_color= 'red'
+    )])
+    
+    st.plotly_chart(fig, use_container_width=True)  
+
 
     if selected_stock != '':       
             st.subheader("""Úlitmo **preço de fechamento** de """ + selected_stock)
