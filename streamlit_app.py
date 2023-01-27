@@ -6,6 +6,7 @@ import streamlit as st
 import datetime
 import fundamentus
 import plotly.graph_objects as go
+from st_aggrid import AgGrid
 
 df = fundamentus.get_resultado()
 
@@ -103,7 +104,8 @@ def main():
     todosAtivos = st.sidebar.checkbox("Todos ativos - Indicadores")
     if todosAtivos:
         st.subheader("Indicadores Fundamentalistas - Todos ativos do IBOV")
-        st.dataframe(df,use_container_width=True)  
+        #st.dataframe(df,use_container_width=True)  
+        AgGrid(df)
  
 
 if __name__ == "__main__":
