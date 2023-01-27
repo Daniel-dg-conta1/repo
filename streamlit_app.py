@@ -103,7 +103,7 @@ def main():
     todosAtivos = st.sidebar.checkbox("Todos ativos - Indicadores")
     if todosAtivos:
         st.subheader("Indicadores Fundamentalistas - Todos ativos do IBOV")
-        st.dataframe(df)  
+        st.dataframe(df,use_container_width=True)  
  
 
 if __name__ == "__main__":
