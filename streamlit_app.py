@@ -95,7 +95,7 @@ def main():
         if display_action.empty == True:
             st.write("Sem dados no momento")
         else:
-            st.write(display_action)      
+            st.write(display_action,use_container_width=True)      
         
     #Mostrar todos ativos
     st.sidebar.subheader("""Mostrar Todos os Ativos""")
