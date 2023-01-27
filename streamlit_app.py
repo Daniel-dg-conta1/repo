@@ -5,6 +5,7 @@ import yfinance as yf
 import streamlit as st
 import datetime
 import fundamentus
+import plotly.graph_objects as go
 
 df = fundamentus.get_resultado()
 
