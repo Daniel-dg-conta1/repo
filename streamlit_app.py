@@ -6,7 +6,8 @@ import streamlit as st
 import datetime
 import fundamentus
 import plotly.graph_objects as go
-from st_aggrid import AgGrid
+from st_aggrid import AgGrid,ColumnsAutoSizeMode
+from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 df = fundamentus.get_resultado()
 
@@ -105,7 +106,18 @@ def main():
     if todosAtivos:
         st.subheader("Indicadores Fundamentalistas - Todos ativos do IBOV")
         #st.dataframe(df,use_container_width=True)  
-        AgGrid(df)
+        gd = GridOptionsBuilder.from_dataframe(df)
+        gd.configure_pagination(enabled=True)
+        gd.configure_default_column(editable=False,groupable=True)
+        #sel_mode = st.radio('Selection Type', options = ['single', 'multiple'])
+        #gd.configure_selection(selection_mode=sel_mode,use_checkbox=True)
+        gd.configure_auto_height(False)
+        
+        gridoptions = gd.build()
+        
+        AgGrid(df,gridOptions=gridoptions,height=500
+               ,columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS
+              ,width='100%')
  
 
 if __name__ == "__main__":
