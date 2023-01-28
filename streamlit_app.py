@@ -10,6 +10,7 @@ from st_aggrid import AgGrid,ColumnsAutoSizeMode
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 df = fundamentus.get_resultado()
+df.insert(0, 'Ativos', df.index)
 
 #ticker search feature in sidebar
 st.sidebar.subheader("""Aplicativo QuantRock""")
